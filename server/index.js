@@ -7,14 +7,14 @@ import postsRoutes from './routes/posts.js'
 
 const app = express()
 
-// routes
-app.use('/posts',postsRoutes)
 
 // middleware
 app.use(express.json({limit:'30mb',extended:true}))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 
+// routes
+app.use('/posts',postsRoutes)
 
 // connect to mongodb
 const CONNECTION_URL = "mongodb+srv://pranto:pranto140@sharestory.tzce8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
