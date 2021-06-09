@@ -2,8 +2,13 @@
 import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
+import postsRoutes from './routes/posts.js'
+
 
 const app = express()
+
+// routes
+app.use('/posts',postsRoutes)
 
 // middleware
 app.use(express.json({limit:'30mb',extended:true}))
