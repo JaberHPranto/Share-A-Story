@@ -15,7 +15,10 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 
 // routes
-app.use('/posts',postsRoutes)
+app.use('/posts', postsRoutes)
+app.get('/', (req, res) => {
+    res.send("Hello to Share Stories API ")
+})
 
 // connect to mongodb
 const PORT = process.env.port || 5000
