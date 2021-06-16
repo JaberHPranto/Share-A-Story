@@ -43,7 +43,7 @@ function Form({setCurrentId,currentId}) {
                 />
                 <TextField name="message" label="Message" variant="outlined" fullWidth value={postData.message} onChange={(e)=>setPostData({...postData,message:e.target.value})} 
                 />
-                <TextField name="tags" label="Tags" variant="outlined" fullWidth value={postData.tags} onChange={(e)=>setPostData({...postData,tags:e.target.value})} 
+                <TextField name="tags" label="Tags" variant="outlined" fullWidth value={postData.tags} onChange={(e)=>setPostData({...postData,tags:e.target.value.split(',')})} 
                 />
 
                 <div className={classes.fileInput}>
