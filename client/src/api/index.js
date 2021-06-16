@@ -9,3 +9,7 @@ export const fetchPosts = () => {
 export const createNewPost = (post) => {
     return axios.post(url,post)
 }
+
+export const modifyPost = (id,post) => {
+    return axios.patch(`${url}/${id}`,post)
+}

@@ -1,30 +1,41 @@
 import { Button, Paper, TextField, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FileBase64 from 'react-file-base64';
-import { useDispatch } from 'react-redux';
-import { createPost } from '../../actions/post';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, updatePost } from '../../actions/post';
 import useStyles from './styles';
 
-function Form() {
+function Form({setCurrentId,currentId}) {
     const [postData, setPostData] = useState({
         creator:'',title:'',message:'',tags:'',selectedFile:''
     })
+    const post = useSelector(state => currentId ? state.posts.find((p) => p._id === currentId) : null)
+    useEffect(() => {
+        if (post)
+            setPostData(post)
+    }, [post])
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(postData);
-        dispatch(createPost(postData))
+        if (currentId) {
+            dispatch(updatePost(currentId,postData))
+        }else 
+            dispatch(createPost(postData))
+        
+        clearForm()
     }
     const clearForm = () => {
-        
+        setCurrentId(null)
+        setPostData({creator:'',title:'',message:'',tags:'',selectedFile:''})
     }
 
     const classes = useStyles() 
     return (
         <Paper className={`${classes.root} ${classes.paper}`}>
             <form autoComplete="off" noValidate className={classes.form} onSubmit={handleSubmit} >
-                <Typography variant="h6">Create a Story</Typography>
+                <Typography variant="h6">{currentId ? "Editing" : "Creating"} a Story</Typography>
 
                 <TextField name="creator" label="Creator" variant="outlined" fullWidth value={postData.creator} onChange={(e)=>setPostData({...postData,creator:e.target.value})} 
                 />
