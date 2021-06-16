@@ -1,6 +1,7 @@
 import * as api from '../api';
 
 // Action creator
+
 export const getPosts = () => async(dispatch)=>{
     try {
         const {data} = await api.fetchPosts()
@@ -24,6 +25,16 @@ export const updatePost = (id,post) => async (dispatch) => {
         const { data } = await api.modifyPost(id, post)
         dispatch({type:"UPDATE",payload:data})
     }catch(error) {
-            console.log(error)
+        console.log(error)
+    } 
+}
+
+
+export const deletePost = (id) => async (dispatch) => {
+    try {
+        await api.removePost(id)
+        dispatch({type:"DELETE",payload:id})
+    }catch(error) {
+        console.log(error)
     } 
 }
