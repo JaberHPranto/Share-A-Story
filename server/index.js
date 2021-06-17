@@ -17,11 +17,11 @@ app.use(cors())
 // routes
 app.use('/posts', postsRoutes)
 app.get('/', (req, res) => {
-    res.send("Hello to Share Stories API ")
+    res.send(`<H1>Hello to Share Stories API </H1>`)
 })
 
 // connect to mongodb
-const PORT = process.env.port || 5000
+const PORT = process.env.PORT || 5000
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 // returns a promise
