@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Quantico&family=Viaoda+Libre&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap");
 
 body {
   margin: 0;
@@ -13,7 +14,7 @@ body {
   background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+/* code {
+  font-family: source-code-pro, Menlo, Monaco,
+    Consolas, "Courier New", monospace;
+} */
