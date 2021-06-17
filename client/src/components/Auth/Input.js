@@ -15,7 +15,7 @@ function Input({name,half,handleChange,label,type,autoFocus,handleShowPassword})
                 fullWidth
                 variant="outlined" 
                 autoFocus={autoFocus}
-                InputProps={name === 'password' && {
+                InputProps={name === 'password' ? {
                     endAdornment: (
                         <InputAdornment position='end'>
                             <IconButton onClick={handleShowPassword}>
@@ -23,7 +23,7 @@ function Input({name,half,handleChange,label,type,autoFocus,handleShowPassword})
                             </IconButton>
                         </InputAdornment>
                     )
-                }}
+                }:null}
 
             />
             
