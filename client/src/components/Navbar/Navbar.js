@@ -1,4 +1,5 @@
 import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
+import decode from 'jwt-decode';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
@@ -19,8 +20,15 @@ function Navbar() {
     }
 
     useEffect(() => {
-        // const token = user?.token
+        const token = user?.token
+        // checking if token expire or not 
+        if (token) {
+            const decodedToken = decode(token)
+            if (decodedToken.exp * 1000 < new Date().getTime())
+                logout()
+        }
         setUser(JSON.parse(localStorage.getItem("profile")))
+        // eslint-disable-next-line 
     }, [location])
 
     return (

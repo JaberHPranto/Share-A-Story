@@ -4,6 +4,7 @@ const auth = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1]
 
+
         const isCustomAuth = token.length < 500 // google's token has length more than 500
 
         let decodedData;
