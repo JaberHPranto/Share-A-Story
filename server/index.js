@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import mongoose from 'mongoose'
 import postsRoutes from './routes/posts.js'
-
+import userRoutes from './routes/users.js'
 
 const app = express()
 dotenv.config()
@@ -16,6 +16,7 @@ app.use(cors())
 
 // routes
 app.use('/posts', postsRoutes)
+app.use('/users', userRoutes)
 // app.get('/', (req, res) => {
 //     res.send(`<H1>Hello to Share Stories API </H1>`)
 // })
